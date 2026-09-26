@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoTale — Головна</title>  
+    <link rel="stylesheet" href="style.css">
+</head> 
+<body>
+
+<header>
+    <div class="header-container">
+        <div class="logo-text">
+            <h1 class="VoTalelogo">VoTale</h1>  
+            <h2 class="golovna">Головна Сторінка</h2>  
+        </div>
+
+        <!-- Навігаційне меню -->
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html" class="active">Головна</a></li>
+          
+                <li><a href="#contacts">Контакты</a></li>
+            </ul>
+        </nav>
+        
+        <!-- Кнопка кошика -->
+        <button class="cart-btn" id="open-cart-btn">
+            <svg class="cart-icon" viewBox="0 0 24 24">
+                <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+            </svg>
+            <span>Кошик</span>
+            <span class="cart-count" id="cart-count">0</span>
+        </button>
+    </div>
+</header>   
+
+<main>
+    <div class="main" id="products">   
+        <h1>Товари</h1>    
+    </div>
+
+    <!-- Сітка товарів -->
+    <div class="products-grid">
+
+        <!-- Картка 1 (з посиланням на окрему сторінку) -->
+        <div class="product-card" data-id="1" data-title="Ігровий Ноутбук VoTale X" data-price="38500" data-img="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=500&auto=format&fit=crop">
+            <span class="product-badge">Топ продажів</span>
+            <div class="product-image">
+                <a href="product.html">
+                    <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=500&auto=format&fit=crop" alt="Ноутбук">
+                </a>
+            </div>
+            <div class="product-info">
+                <h3 class="product-title"><a href="product.html">Ігровий Ноутбук VoTale X</a></h3>
+                <p class="product-description">Потужний ноутбук для ігор та роботи з графікою. 16GB RAM, RTX 4060.</p>
+                <div class="product-bottom">
+                    <div class="price-block">
+                        <span class="old-price">42 999 ₴</span>
+                        <span class="current-price">38 500 ₴</span>
+                    </div>
+                    <button class="add-to-cart-btn">
+                        <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                        В кошик
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Картка 2 -->
+        <div class="product-card" data-id="2" data-title="Бездротові Навушники Pro" data-price="4999" data-img="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&auto=format&fit=crop">
+            <div class="product-image">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&auto=format&fit=crop" alt="Навушники">
+            </div>
+            <div class="product-info">
+        <h3 class="product-title"><a href="product1.html">Бездротові Навушники Pro</a></h3>
+                <p class="product-description">Активне шумозаглушення, чистий звук та до 30 годин роботи.</p>
+                <div class="product-bottom">
+                    <div class="price-block">
+                         <span class="old-price">5 999 ₴</span>
+                        <span class="current-price">4 999 ₴ </span>
+                    </div>
+                    <button class="add-to-cart-btn">
+                        <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                        В кошик
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Картка 3 -->
+        <div class="product-card" data-id="3" data-title="Миша Ігрова RGB" data-price="1199" data-img="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=500&auto=format&fit=crop">
+            <span class="product-badge">Новинка</span>
+            <div class="product-image">
+                <img src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=500&auto=format&fit=crop" alt="Мишка">
+            </div>
+            <div class="product-info">
+<h3 class="product-title"><a href="product2.html">Миша Ігрова RGB</a></h3>
+                <p class="product-description">Ергономічний дизайн, висока точність сенсора та налаштування підсвічування.</p>
+                <div class="product-bottom">
+                    <div class="price-block">
+                        <span class="old-price">1 500 ₴</span>
+                        <span class="current-price">1 199 ₴</span>
+                    </div>
+                    <button class="add-to-cart-btn">
+                        <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                        В кошик
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>   
+
+<!-- Модальне вікно кошика -->
+<div class="cart-modal" id="cart-modal">
+    <div class="cart-modal-content">
+        <div class="cart-modal-header">
+            <h2>Кошик покупок</h2>
+            <button class="close-cart-btn" id="close-cart-btn">&times;</button>
+        </div>
+        <div class="cart-items" id="cart-items-container">
+            <!-- Товари генеруються через JS -->
+        </div>
+        <div class="cart-modal-footer">
+            <div class="total-price-text">Загалом: <span id="cart-total-sum">0 ₴</span></div>
+            <button class="checkout-btn" id="checkout-btn">Оформити замовлення</button>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>    
+</html>
