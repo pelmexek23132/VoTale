@@ -1,1 +1,155 @@
 
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ігровий Ноутбук VoTale X — VoTale</title>  
+    <link rel="stylesheet" href="product-style.css">
+</head> 
+<body>
+
+<header>
+    <div class="header-container">
+        <div class="logo-text">
+            <a href="index.html" class="VoTalelogo">VoTale</a>  
+            <h2 class="golovna">Магазин техніки</h2>  
+        </div>
+        
+        <!-- Кнопка кошика -->
+        <a href="#cart" class="cart-btn">
+            <svg class="cart-icon" viewBox="0 0 24 24">
+                <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+            </svg>
+            <span>Кошик</span>
+            <span class="cart-count" id="cart-count">0</span>
+        </a>
+    </div>
+</header>   
+
+<main class="product-page">
+    <!-- Хлібні крихти (Навігація) -->
+    <nav class="breadcrumbs">
+        <a href="index.html">Головна</a> &gt; 
+        <span>Ноутбук VoTale X</span>
+    </nav>
+
+    <!-- Основний блок товару -->
+    <div class="product-detail-container">
+        
+        <!-- Ліва колонка: Галерея фото -->
+        <div class="product-gallery">
+            <div class="main-image">
+                <img id="current-img" src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&auto=format&fit=crop" alt="Ноутбук VoTale X">
+            </div>
+            <div class="thumbnail-list">
+                <img class="thumb active" src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&auto=format&fit=crop" alt="Фото 1">
+                <img class="thumb" src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=800&auto=format&fit=crop" alt="Фото 2">
+                <img class="thumb" src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=800&auto=format&fit=crop" alt="Фото 3">
+            </div>
+        </div>
+
+        <!-- Права колонка: Інформація та Купівля -->
+        <div class="product-buy-info">
+            <span class="stock-status in-stock">● В наявності</span>
+            <h1 class="product-title-page">Ігровий Ноутбук VoTale X</h1>
+            <p class="sku">Артикул: VT-89042</p>
+
+            <!-- Ціна -->
+            <div class="price-section">
+                <span class="old-price-page">42 999 ₴</span>
+                <span class="current-price-page" id="total-price">38 500 ₴</span>
+            </div>
+
+            <!-- Вибір конфігурації -->
+            <div class="options-section">
+                <label class="option-title">Оперативна пам'ять:</label>
+                <div class="option-buttons" id="ram-options">
+                    <button class="option-btn active" data-add-price="0">16 GB DDR5</button>
+                    <button class="option-btn" data-add-price="2500">32 GB DDR5 (+2 500 ₴)</button>
+                </div>
+
+                <label class="option-title">SSD Накопичувач:</label>
+                <div class="option-buttons" id="ssd-options">
+                    <button class="option-btn active" data-add-price="0">1 TB NVMe</button>
+                    <button class="option-btn" data-add-price="2000">2 TB NVMe (+2 000 ₴)</button>
+                </div>
+            </div>
+
+            <!-- Кнопки дій -->
+            <div class="actions-section">
+                <button class="buy-now-btn" id="add-to-cart-page">
+                    <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                    Додати в кошик
+                </button>
+                <button class="quick-buy-btn">Купити в 1 клік</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Таби: Опис / Характеристики / Відгуки -->
+    <div class="tabs-container">
+        <div class="tabs-header">
+            <button class="tab-btn active" data-tab="description">Опис</button>
+            <button class="tab-btn" data-tab="specs">Повні характеристики</button>
+            <button class="tab-btn" data-tab="reviews">Відгуки (3)</button>
+        </div>
+
+        <div class="tabs-content">
+            <!-- Вкладка Опис -->
+            <div class="tab-pane active" id="description">
+                <h3>Максимальна продуктивність для ігор та роботи</h3>
+                <p>Ноутбук <strong>VoTale X</strong> створений для тих, хто шукає бескомпромісну потужність. Завдяки сучасному процесору Intel Core i7 та відеокарті NVIDIA GeForce RTX 4060, ви зможете грати в найновіші AAA-ігри на ультра-налаштуваннях та швидко рендерити 4K відео.</p>
+                <p>Система охолодження VoTale CoolPro захищає ноутбук від перегріву навіть під час тривалих ігрових сесій.</p>
+            </div>
+
+            <!-- Вкладка Характеристики -->
+            <div class="tab-pane" id="specs">
+                <table class="specs-table">
+                    <tr><td>Процесор</td><td>Intel Core i7-13700H (14 ядер, до 5.0 ГГц)</td></tr>
+                    <tr><td>Відеокарта</td><td>NVIDIA GeForce RTX 4060, 8 GB GDDR6</td></tr>
+                    <tr><td>Дисплей</td><td>15.6" Full HD (1920x1080) IPS, 144 Гц, матовий</td></tr>
+                    <tr><td>Оперативна пам'ять</td><td>16 GB / 32 GB DDR5 4800 МГц</td></tr>
+                    <tr><td>Накопичувач</td><td>SSD NVMe M.2 1 TB / 2 TB</td></tr>
+                    <tr><td>Бездротові зв'язки</td><td>Wi-Fi 6E, Bluetooth 5.2</td></tr>
+                    <tr><td>Вага</td><td>2.2 кг</td></tr>
+                </table>
+            </div>
+
+            <!-- Вкладка Відгуки -->
+            <div class="tab-pane" id="reviews">
+                <div class="review-card">
+                    <div class="review-author">Олександр <span>★★★★★</span></div>
+                    <p class="review-text">Ноут просто дикий! Всі ігри летять на ультрах. Екран 144 Гц дуже приємний для очей.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-author">Марія <span>★★★★☆</span></div>
+                    <p class="review-text">Чудовий ноутбук для монтажу відео. Працює швидко, але під навантаженням трохи шумить.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Модальне вікно кошика -->
+<div id="cart-modal" class="cart-modal">
+    <div class="cart-modal-content">
+        <div class="cart-modal-header">
+            <h2>Кошик</h2>
+            <button id="close-cart-btn" class="close-btn">&times;</button>
+        </div>
+        <div id="cart-items" class="cart-items-list">
+            <!-- Динамічно додаються товари -->
+        </div>
+        <div class="cart-modal-footer">
+            <div class="cart-total-price">
+                Загалом: <span id="cart-total-sum">0 ₴</span>
+            </div>
+            <button id="checkout-btn" class="checkout-btn">Оформити замовлення</button>
+        </div>
+    </div>
+</div>
+
+<script src="product-script.js"></script>
+</body>
+</html>
