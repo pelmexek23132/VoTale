@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бездротові Навушники Pro — VoTale</title>  
+    <link rel="stylesheet" href="style2.css">
+</head> 
+<body>
+
+<header>
+    <div class="header-container">
+        <div class="logo-text">
+            <a href="index.html" class="VoTalelogo">VoTale</a>  
+            <h2 class="golovna">Магазин техніки</h2>  
+        </div>
+        
+        <button id="open-cart-btn" class="cart-btn">
+            <svg class="cart-icon" viewBox="0 0 24 24">
+                <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+            </svg>
+            <span>Кошик</span>
+            <span class="cart-count" id="cart-count">0</span>
+        </button>
+    </div>
+</header>    
+
+<main class="product-page">
+    <nav class="breadcrumbs">
+        <a href="index.html">Головна</a> &gt; 
+        <span>Бездротові Навушники Pro</span>
+    </nav>
+
+    <div class="product-detail-container product-card" 
+         data-id="AUD-PRO-2024" 
+         data-title="Бездротові Навушники Pro" 
+         data-price="4999" 
+         data-img="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&auto=format&fit=crop">
+        
+        <div class="product-gallery">
+            <div class="main-image">
+                <img id="current-img" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&auto=format&fit=crop" alt="Бездротові Навушники Pro">
+            </div>
+            <div class="thumbnail-list">
+                <img class="thumb active" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&auto=format&fit=crop" alt="Чорний">
+                <img class="thumb" src="https://images.unsplash.com/photo-1484704849700-f032a568e944?w=800&auto=format&fit=crop" alt="Сріблястий">
+                <img class="thumb" src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=800&auto=format&fit=crop" alt="Деталі">
+            </div>
+        </div>
+
+        <div class="product-buy-info">
+            <span class="stock-status in-stock">● В наявності</span>
+            <h1 class="product-title-page">Бездротові Навушники Pro</h1>
+            <p class="sku">Артикул: AUD-PRO-2024</p>
+
+            <div class="price-section">
+                <span class="old-price-page">5 999 ₴</span>
+                <span class="current-price-page" id="total-price">4 999 ₴</span>
+            </div>
+
+            <div class="options-section">
+                <label class="option-title">Колір:</label>
+                <div class="option-buttons" id="color-options">
+                    <button class="option-btn active" data-add-price="0">Space Black</button>
+                    <button class="option-btn" data-add-price="0">Silver Shield</button>
+                </div>
+
+                <label class="option-title">Гарантія та сервіс:</label>
+                <div class="option-buttons" id="warranty-options">
+                    <button class="option-btn active" data-add-price="0">12 місяців (Стандарт)</button>
+                    <button class="option-btn" data-add-price="500">24 місяці (+500 ₴)</button>
+                </div>
+            </div>
+
+            <div class="actions-section">
+                <button class="add-to-cart-btn" id="add-to-cart-page">
+                    <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                    Додати в кошик
+                </button>
+                <button class="quick-buy-btn">Купити в 1 клік</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Таби -->
+    <div class="tabs-container">
+        <div class="tabs-header">
+            <button class="tab-btn active" data-tab="description">Опис</button>
+            <button class="tab-btn" data-tab="specs">Характеристики</button>
+            <button class="tab-btn" data-tab="reviews">Відгуки (2)</button>
+        </div>
+
+        <div class="tabs-content">
+            <div class="tab-pane active" id="description">
+                <h3>Повне занурення у світ музики</h3>
+                <p><strong>Бездротові Навушники Pro</strong> поєднують у собі передове активне шумозаглушення (ANC) та глибокий, збалансований звук Hi-Fi якості.</p>
+                <p>Завдяки енергоефективному чіпу та оптимізованому акумулятору ви отримаєте до 30 годин безперервного відтворення від одного заряду.</p>
+            </div>
+
+            <div class="tab-pane" id="specs">
+                <table class="specs-table">
+                    <tr><td>Тип навушників</td><td>Повнорозмірні / Бездротові</td></tr>
+                    <tr><td>Шумозаглушення</td><td>Активне (ANC) + Прозорий режим</td></tr>
+                    <tr><td>Час роботи</td><td>До 30 годин (з ANC)</td></tr>
+                    <tr><td>Зарядка</td><td>Fast Charge через USB-C (10 хв = 3 год)</td></tr>
+                    <tr><td>Бездротовий зв'язок</td><td>Bluetooth 5.3</td></tr>
+                    <tr><td>Вага</td><td>250 г</td></tr>
+                </table>
+            </div>
+
+            <div class="tab-pane" id="reviews">
+                <div class="review-card">
+                    <div class="review-author">Артем <span>★★★★★</span></div>
+                    <p class="review-text">Шумодав працює ідеально, в метро взагалі не чути шуму. Баси глибокі, автономність вражає!</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-author">Олена <span>★★★★★</span></div>
+                    <p class="review-text">Дуже зручно сидять на голові, вуха не втомлюються навіть після кількох годин роботи.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div class="cart-modal" id="cart-modal">
+    <div class="cart-modal-content">
+        <div class="cart-modal-header">
+            <h2>Кошик</h2>
+            <button class="close-cart-btn" id="close-cart-btn">&times;</button>
+        </div>
+        <div class="cart-items-container" id="cart-items-container"></div>
+        <div class="cart-modal-footer">
+            <div class="cart-total">
+                <span>Разом:</span>
+                <span id="cart-total-sum">0 ₴</span>
+            </div>
+            <button class="checkout-btn" id="checkout-btn">Оформити замовлення</button>
+        </div>
+    </div>
+</div>
+
+<script src="script2.js"></script>
+</body>
+</html>
