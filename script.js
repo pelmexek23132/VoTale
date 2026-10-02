@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Зберігання кошика у localStorage (щоб товари не зникали при перезавантаженні)
+    // 1. Ініціалізація та збереження кошика у localStorage
     let cart = JSON.parse(localStorage.getItem('voTaleCart')) || [];
 
     const cartCountElement = document.getElementById('cart-count');
@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartItemsContainer = document.getElementById('cart-items-container');
     const cartTotalSum = document.getElementById('cart-total-sum');
 
-    // 1. Оновлення лічильника і суми
+    // 2. Оновлення лічильника і підсумкової суми
     function updateCartUI() {
         const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
         const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('voTaleCart', JSON.stringify(cart));
     }
 
-    // 2. Рендеринг товарів у модальному вікні
+    // 3. Відображення товарів у модальному вікні кошика
     function renderCartItems() {
         if (!cartItemsContainer) return;
 
@@ -35,79 +35,150 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        cartItemsContainer.innerHTML = cart.map(item => `
+        cartItemsContainer.innerHTML = cart.map((item, index) => `
             <div class="cart-item">
                 <img src="${item.img}" alt="${item.title}">
                 <div class="cart-item-info">
                     <div class="cart-item-title">${item.title}</div>
+                    ${(item.color || item.warranty) ? `
+                        <div style="font-size: 11px; color: #8a8a9e; margin-bottom: 3px;">
+                            ${item.color ? 'Колір: ' + item.color : ''} ${item.warranty ? '| ' + item.warranty : ''}
+                        </div>` : ''}
                     <div class="cart-item-price">${item.quantity} x ${item.price.toLocaleString('uk-UA')} ₴</div>
                 </div>
-                <button class="remove-item-btn" data-id="${item.id}">&times;</button>
+                <button class="remove-item-btn" data-index="${index}">&times;</button>
             </div>
         `).join('');
 
-        // Подія видалення товару з кошика
+        // Видалення товару за індексом
         document.querySelectorAll('.remove-item-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
-                const id = e.target.getAttribute('data-id');
-                cart = cart.filter(item => item.id !== id);
+                const index = parseInt(e.target.getAttribute('data-index'));
+                cart.splice(index, 1);
                 updateCartUI();
                 renderCartItems();
             });
         });
     }
 
-    // 3. Додавання товару в кошик
-    document.querySelectorAll('.add-to-cart-btn').forEach(button => {
-        button.addEventListener('click', (e) => {
-            const card = e.target.closest('.product-card');
-            if (!card) return;
+    // 4. Обробка додавання товарів (як із головної сторінки, так і зі сторінки товару)
+    document.addEventListener('click', (e) => {
+        const btn = e.target.closest('.add-to-cart-btn, #add-to-cart-page, .quick-buy-btn');
+        if (!btn) return;
 
-            const id = card.getAttribute('data-id');
-            const title = card.getAttribute('data-title');
-            const price = parseInt(card.getAttribute('data-price'));
-            const img = card.getAttribute('data-img');
+        const productCard = e.target.closest('.product-card') || document.querySelector('.product-card');
+        if (!productCard) return;
 
-            const existingItem = cart.find(item => item.id === id);
+        const id = productCard.getAttribute('data-id') || '1';
+        const title = productCard.getAttribute('data-title') || 'Товар';
+        const price = parseInt(productCard.getAttribute('data-price')) || 0;
+        const img = productCard.getAttribute('data-img') || '';
+        const color = productCard.getAttribute('data-selected-color') || '';
+        const warranty = productCard.getAttribute('data-selected-warranty') || '';
 
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({ id, title, price, img, quantity: 1 });
-            }
+        // Пошук такого ж товару з однаковими опціями
+        const existingItem = cart.find(item => 
+            item.id === id && item.color === color && item.warranty === warranty
+        );
 
-            updateCartUI();
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            cart.push({ id, title, price, img, color, warranty, quantity: 1 });
+        }
 
-            // Анімація лічильника
-            if (cartCountElement) {
-                cartCountElement.style.transform = 'scale(1.4)';
-                setTimeout(() => cartCountElement.style.transform = 'scale(1)', 200);
-            }
-        });
+        updateCartUI();
+
+        // Анімація бейджа кошика
+        if (cartCountElement) {
+            cartCountElement.style.transform = 'scale(1.4)';
+            setTimeout(() => cartCountElement.style.transform = 'scale(1)', 200);
+        }
+
+        // Якщо натиснуто на сторінці детального перегляду — автоматично відкриваємо кошик
+        if (btn.id === 'add-to-cart-page' || btn.classList.contains('quick-buy-btn')) {
+            renderCartItems();
+            if (cartModal) cartModal.classList.add('active');
+        }
     });
 
-    // 4. Відкриття / Закриття модального вікна кошика
+    // 5. Робота з опціями (колір, гарантія) та галереєю на сторінках товарів
+    const productCard = document.querySelector('.product-card');
+    const totalPriceEl = document.getElementById('total-price');
+    const currentImg = document.getElementById('current-img');
+    const thumbs = document.querySelectorAll('.thumb');
+
+    if (productCard && totalPriceEl) {
+        const basePrice = parseInt(productCard.getAttribute('data-base-price')) || parseInt(productCard.getAttribute('data-price')) || 0;
+
+        function updateDetailPagePrice() {
+            let addedPrice = 0;
+            let selectedColor = '';
+            let selectedWarranty = '';
+
+            document.querySelectorAll('.option-btn.active').forEach(b => {
+                addedPrice += parseInt(b.getAttribute('data-add-price')) || 0;
+            });
+
+            const finalPrice = basePrice + addedPrice;
+            totalPriceEl.textContent = finalPrice.toLocaleString('uk-UA') + ' ₴';
+            productCard.setAttribute('data-price', finalPrice);
+
+            const activeColor = document.querySelector('#color-options .option-btn.active');
+            const activeWarranty = document.querySelector('#warranty-options .option-btn.active');
+
+            if (activeColor) selectedColor = activeColor.textContent.trim();
+            if (activeWarranty) selectedWarranty = activeWarranty.textContent.trim();
+
+            productCard.setAttribute('data-selected-color', selectedColor);
+            productCard.setAttribute('data-selected-warranty', selectedWarranty);
+        }
+
+        document.querySelectorAll('.option-buttons').forEach(container => {
+            container.addEventListener('click', (e) => {
+                const optionBtn = e.target.closest('.option-btn');
+                if (optionBtn) {
+                    container.querySelectorAll('.option-btn').forEach(b => b.classList.remove('active'));
+                    optionBtn.classList.add('active');
+                    updateDetailPagePrice();
+                }
+            });
+        });
+
+        // Перемикання мініатюр галереї
+        thumbs.forEach(thumb => {
+            thumb.addEventListener('click', () => {
+                if (currentImg) currentImg.src = thumb.src;
+                thumbs.forEach(t => t.classList.remove('active'));
+                thumb.classList.add('active');
+                productCard.setAttribute('data-img', thumb.src);
+            });
+        });
+
+        updateDetailPagePrice();
+    }
+
+    // 6. Управління модальним вікном кошика
     if (openCartBtn) {
         openCartBtn.addEventListener('click', () => {
             renderCartItems();
-            cartModal.classList.add('active');
+            if (cartModal) cartModal.classList.add('active');
         });
     }
 
     if (closeCartBtn) {
         closeCartBtn.addEventListener('click', () => {
-            cartModal.classList.remove('active');
+            if (cartModal) cartModal.classList.remove('active');
         });
     }
 
-    // Закриття при кліку поза вікном
     window.addEventListener('click', (e) => {
         if (e.target === cartModal) {
             cartModal.classList.remove('active');
         }
     });
 
-    // Оформлення замовлення
+    // 7. Оформлення замовлення
     const checkoutBtn = document.getElementById('checkout-btn');
     if (checkoutBtn) {
         checkoutBtn.addEventListener('click', () => {
@@ -118,11 +189,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 cart = [];
                 updateCartUI();
                 renderCartItems();
-                cartModal.classList.remove('active');
+                if (cartModal) cartModal.classList.remove('active');
             }
         });
     }
 
-    // Початкова ініціалізація
+    // Первинна ініціалізація
     updateCartUI();
 });
