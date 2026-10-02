@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Миша Ігрова RGB — VoTale</title>  
+    <link rel="stylesheet" href="style2.css">
+</head> 
+<body>
+
+<header>
+    <div class="header-container">
+        <div class="logo-text">
+            <a href="index.html" class="VoTalelogo">VoTale</a>  
+            <h2 class="golovna">Магазин техніки</h2>  
+        </div>
+        
+        <button id="open-cart-btn" class="cart-btn">
+            <svg class="cart-icon" viewBox="0 0 24 24">
+                <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+            </svg>
+            <span>Кошик</span>
+            <span class="cart-count" id="cart-count">0</span>
+        </button>
+    </div>
+</header>    
+
+<main class="product-page">
+    <nav class="breadcrumbs">
+        <a href="index.html">Головна</a> &gt; 
+        <span>Миша Ігрова RGB</span>
+    </nav>
+
+    <div class="product-detail-container product-card" 
+         data-id="GAM-MOUSE-RGB" 
+         data-title="Миша Ігрова RGB" 
+         data-price="1199" 
+         data-img="https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=800&auto=format&fit=crop">
+        
+        <div class="product-gallery">
+            <div class="main-image">
+                <img id="current-img" src="https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=800&auto=format&fit=crop" alt="Миша Ігрова RGB">
+            </div>
+            <div class="thumbnail-list">
+                <img class="thumb active" src="https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=800&auto=format&fit=crop" alt="Чорний">
+                <img class="thumb" src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=800&auto=format&fit=crop" alt="Вигляд збоку">
+            </div>
+        </div>
+
+        <div class="product-buy-info">
+            <span class="stock-status in-stock">● В наявності</span>
+            <h1 class="product-title-page">Миша Ігрова RGB</h1>
+            <p class="sku">Артикул: GAM-MOUSE-RGB</p>
+
+            <div class="price-section">
+                <span class="old-price-page">1 500 ₴</span>
+                <span class="current-price-page" id="total-price">1 199 ₴</span>
+            </div>
+
+            <div class="options-section">
+                <label class="option-title">Колір корпусу:</label>
+                <div class="option-buttons" id="color-options">
+                    <button class="option-btn active" data-add-price="0">Чорний (Black)</button>
+                    <button class="option-btn" data-add-price="0">Білий (White)</button>
+                </div>
+
+                <label class="option-title">Гарантія та сервіс:</label>
+                <div class="option-buttons" id="warranty-options">
+                    <button class="option-btn active" data-add-price="0">12 місяців (Стандарт)</button>
+                    <button class="option-btn" data-add-price="200">24 місяці (+200 ₴)</button>
+                </div>
+            </div>
+
+            <div class="actions-section">
+                <button class="add-to-cart-btn" id="add-to-cart-page">
+                    <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                    Додати в кошик
+                </button>
+                <button class="quick-buy-btn">Купити в 1 клік</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Таби -->
+    <div class="tabs-container">
+        <div class="tabs-header">
+            <button class="tab-btn active" data-tab="description">Опис</button>
+            <button class="tab-btn" data-tab="specs">Характеристики</button>
+            <button class="tab-btn" data-tab="reviews">Відгуки (2)</button>
+        </div>
+
+        <div class="tabs-content">
+            <div class="tab-pane active" id="description">
+                <h3>Максимальний контроль та точність у грі</h3>
+                <p><strong>Миша Ігрова RGB</strong> створена для кіберспортсменів та геймерів, яким важлива кожна мілісекунда. <strong>Ергономічний дизайн</strong> забезпечує комфортний хват навіть під час тривалих ігрових сесій.</p>
+                <p><strong>Висока точність сенсора</strong> гарантує миттєвий відгук та точне позиціонування курсора без зривів. Гнучке <strong>налаштування підсвічування RGB</strong> дозволяє кастомізувати зовнішній вигляд під будь-який сетап.</p>
+            </div>
+
+            <div class="tab-pane" id="specs">
+                <table class="specs-table">
+                    <tr><td>Тип сенсора</td><td>Оптичний ігровий сенсор</td></tr>
+                    <tr><td>Роздільна здатність (DPI)</td><td>До 12 400 DPI (з можливістю перемикання)</td></tr>
+                    <tr><td>Підсвічування</td><td>RGB (16.8 млн кольорів, налаштовувані ефекти)</td></tr>
+                    <tr><td>Кількість кнопок</td><td>6 програмованих кнопок</td></tr>
+                    <tr><td>Підключення</td><td>Дротове (USB у міцному обплетенні)</td></tr>
+                    <tr><td>Вага</td><td>85 г</td></tr>
+                </table>
+            </div>
+
+            <div class="tab-pane" id="reviews">
+                <div class="review-card">
+                    <div class="review-author">Максим <span>★★★★★</span></div>
+                    <p class="review-text">Чудова мишка за свої гроші! Сенсор не зірвало жодного разу в CS2, підсвічування дуже красиво виглядає вночі.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-author">Владислав <span>★★★★★</span></div>
+                    <p class="review-text">Форма зручна, пластик приємний на дотик. Дріт м'який та не заважає при різких рухах.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Модальне вікно кошика -->
+<div class="cart-modal" id="cart-modal">
+    <div class="cart-modal-content">
+        <div class="cart-modal-header">
+            <h2>Кошик</h2>
+            <button class="close-cart-btn" id="close-cart-btn">&times;</button>
+        </div>
+        <div class="cart-items-container" id="cart-items-container"></div>
+        <div class="cart-modal-footer">
+            <div class="cart-total">
+                <span>Разом:</span>
+                <span id="cart-total-sum">0 ₴</span>
+            </div>
+            <button class="checkout-btn" id="checkout-btn">Оформити замовлення</button>
+        </div>
+    </div>
+</div>
+
+<script src="script3.js"></script>
+</body>
+</html>
