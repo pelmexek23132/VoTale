@@ -76,7 +76,7 @@ header {
     color: #feb47b;
 }
 
-/* Кнопка Кошика */
+
 .cart-btn {
     display: flex;
     align-items: center;
@@ -110,7 +110,7 @@ header {
     transition: transform 0.2s ease;
 }
 
-/* Основний контент */
+
 main {
     max-width: 1200px;
     margin: 0 auto;
@@ -136,7 +136,7 @@ main {
     gap: 25px;
 }
 
-/* Картка товару */
+
 .product-card {
     background: #2b2b36;
     border-radius: 18px;
